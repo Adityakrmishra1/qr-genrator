@@ -4,7 +4,7 @@
 - step3 : do `npm start`
 
 
-genrating the qr code : 
+- Genrating the qr code : 
 
 curl --location 'http://localhost:3000/api/v1/generate-qr-code' \
 --header 'Content-Type: application/json' \
