@@ -46,6 +46,7 @@ const getQrImage = async function (req, res) {
 		};
 		let filePath = constants.HOME_DIR + '/' + constants.LOCAL_DIR_NAME;
 		let imageFilePath = filePath + '/' + imageId + '.png';
+		apiService.validateForImage(imageFilePath);
 		return res.status(200).sendFile(imageFilePath);
 	} catch (err) {
 		console.log('error while getting the qr Image :: ' + err);
