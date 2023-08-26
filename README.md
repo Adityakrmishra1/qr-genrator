@@ -12,6 +12,9 @@
 	    "data" : <string to genrate the qr code.>
 	}'
 
+	![Uploading Screenshot from 2023-08-26 16-19-37.png…]()
+
+
 
 - To fetch the genrated qr codes
 
