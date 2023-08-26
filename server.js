@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const app = express();
 
@@ -8,6 +10,6 @@ app.use(express.json());
 app.use('/api/v1', apiRoutes);
 
 
-app.listen(CONSTANTS.PORT, ()=> {
+app.listen(CONSTANTS.PORT, () => {
 	console.log("Sccessfully Started the Server at PORT " + CONSTANTS.PORT);
 });
