@@ -9,14 +9,15 @@
 	curl --location 'http://localhost:3000/api/v1/generate-qr-code' \
 	--header 'Content-Type: application/json' \
 	--data '{
-	    "data" : <string to genrate the qr code.>
+	    "data": <string to generate the QR code.>
 	}'
 
-	![Uploading Screenshot from 2023-08-26 16-19-37.png…]()
+	![Screenshot from 2023-08-26 16-19-37](https://github.com/Adityakrmishra1/qr-genrator/assets/55797769/86998c10-0e9e-4145-b372-8431b4231827)
 
 
 
-- To fetch the genrated qr codes
+
+- To fetch the generated QR codes
 
 	curl --location 'http://localhost:3000/api/v1/get-qr-code/:imageId'
 
