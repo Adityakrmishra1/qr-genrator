@@ -1,6 +1,7 @@
 'use strict';
 const constants = require('../../constants/constants');
 const util = require('./api.utils');
+const fs = require('fs');
 const apiService = require('./api.service')
 
 const genrateQrCode = async function (req, res) {
@@ -46,7 +47,12 @@ const getQrImage = async function (req, res) {
 		};
 		let filePath = constants.HOME_DIR + '/' + constants.LOCAL_DIR_NAME;
 		let imageFilePath = filePath + '/' + imageId + '.png';
-		apiService.validateForImage(imageFilePath);
+		if (!fs.existsSync(imageId)) {
+			return res.status(404).json({
+				'error': "NO_SUCH_FILE",
+				'message': "file dosen't exist on the system"
+			})
+		}
 		return res.status(200).sendFile(imageFilePath);
 	} catch (err) {
 		console.log('error while getting the qr Image :: ' + err);

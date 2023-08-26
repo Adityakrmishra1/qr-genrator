@@ -20,18 +20,6 @@ const createQrAndGetPath = async function (data) {
 	}
 }
 
-let validateForImage = function (imageId) {
-	try {
-		return fs.existsSync(imageId) === true ? Promise.resolve() :
-			Promise.reject("File don't exist");
-
-	} catch (error) {
-		console.log("error while checking for the imageId " + error);
-		return Promise.reject('error while checking for the imageId');
-	}
-}
-
 module.exports = {
 	createQrAndGetPath: createQrAndGetPath,
-	validateForImage: validateForImage
 }
