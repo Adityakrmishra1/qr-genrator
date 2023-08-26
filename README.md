@@ -17,6 +17,9 @@
 
 	curl --location 'http://localhost:3000/api/v1/get-qr-code/:imageId'
 
+	![Screenshot from 2023-08-26 16-18-31](https://github.com/Adityakrmishra1/qr-genrator/assets/55797769/3ad63df1-4b41-473a-ba9c-6dddd5f83d27)
+
+
 
 
 
