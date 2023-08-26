@@ -18,6 +18,7 @@ const genrateQrCode = async function (req, res) {
 		let fileName = await apiService.createQrAndGetPath(data);
 		console.log("path : " + fileName);
 		return res.status(200).json({
+			qrId: fileName.replace('.png', ''),
 			filename: fileName,
 			originalString: data,
 			message: 'yay your qr code is genrated and saved'
@@ -33,11 +34,33 @@ const genrateQrCode = async function (req, res) {
 	}
 }
 
+const getQrImage = async function (req, res) {
+	try {
+		console.log("inside getQrImage function ::: ");
+		const { imageId } = req?.params;
+		if (util.validateImageId(imageId)) {
+			return res.status(400).json({
+				'error': 'INVALID_INPUT',
+				'message': 'inavlid Image Id'
+			})
+		};
+		let filePath = constants.HOME_DIR + '/' + constants.LOCAL_DIR_NAME;
+		let imageFilePath = filePath + '/' + imageId + '.png';
+		return res.status(200).sendFile(imageFilePath);
+	} catch (err) {
+		console.log('error while getting the qr Image :: ' + err);
+		return res.status(500).json({
+			'error': 'INTERNAL_ERROR',
+			'message': 'Error while getting the qr-code '
+		});
+	}
+}
 
 
 
 
 module.exports = {
 	genrateQrCode: genrateQrCode,
+	getQrImage: getQrImage
 
 }

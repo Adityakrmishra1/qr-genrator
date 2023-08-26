@@ -1,5 +1,6 @@
 'use strict';
 const express = require("express");
+
 const fs = require('fs');
 const os = require('os');
 
@@ -17,6 +18,7 @@ const validateData = function (data) {
 }
 
 let checkAndCreateDirectory = async function (directoryPath) {
+	directoryPath = constants.HOME_DIR + '/' + directoryPath;
 	return fs.stat(directoryPath, (error, stats) => {
 		if (error && error.code === 'ENOENT') {
 			fs.mkdir(directoryPath, (err) => {
@@ -34,8 +36,16 @@ let checkAndCreateDirectory = async function (directoryPath) {
 	});
 }
 
+let validateImageId = function(data){
+	console.log("Image Id ::: " + data);
+	const pattern = /[^0-9a-zA-Z]/g;
+	const matches = data.match(pattern);
+	return (matches && matches.length !== 0); 
+
+}
 
 module.exports = {
 	validateData: validateData,
 	checkAndCreateDirectory: checkAndCreateDirectory,
+	validateImageId: validateImageId,
 }

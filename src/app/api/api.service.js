@@ -1,14 +1,14 @@
 'use strict';
 const qrCode = require('qrcode');
-
+const ShortUniqueId = require('short-unique-id');
 const util = require("./api.utils");
 const constants = require('../../constants/constants')
 
 
 const createQrAndGetPath = async function (data) {
 	try {
-		let timestamp = Date.now();
-		let fileName = timestamp + '.png';
+		let uid = new ShortUniqueId({ length: 7 });
+		let fileName = uid.stamp(32) + '.png';
 		await util.checkAndCreateDirectory(constants.LOCAL_DIR_NAME);
 		const filePath = constants.HOME_DIR + '/' + constants.LOCAL_DIR_NAME + '/' + fileName;
 		await qrCode.toFile(filePath, data);
