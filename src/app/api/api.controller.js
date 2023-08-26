@@ -42,12 +42,12 @@ const getQrImage = async function (req, res) {
 		if (util.validateImageId(imageId)) {
 			return res.status(400).json({
 				'error': 'INVALID_INPUT',
-				'message': 'inavlid Image Id'
+				'message': 'Inavlid Image Id'
 			})
 		};
 		let filePath = constants.HOME_DIR + '/' + constants.LOCAL_DIR_NAME;
 		let imageFilePath = filePath + '/' + imageId + '.png';
-		if (!fs.existsSync(imageId)) {
+		if (!fs.existsSync(imageFilePath)) {
 			return res.status(404).json({
 				'error': "NO_SUCH_FILE",
 				'message': "file dosen't exist on the system"
